@@ -8,9 +8,9 @@ import lombok.*;
 @Setter
 @Getter
 public class CustomerOrderDetails {
-    private String orderId;
-    private String customerId;
-    private String orderDate;
-    private double totalAmount;
-    private String shippingAdress;
+    private String OrderId;
+    private String CustomerId;
+    private String OrderDate;
+    private double TotalAmount;
+    private String ShippingAddress;
 }

@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class LoginDetails {
-    private String userName;
-    private String password;
+    private String UserName;
+    private String Password;
 }

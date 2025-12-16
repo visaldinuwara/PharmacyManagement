@@ -9,9 +9,9 @@ import lombok.*;
 @Getter
 public class SupplierDetails {
     private String id;
-    private String legalName;
-    private String tradeName;
-    private String primaryContact;
+    private String LegalName;
+    private String TradeName;
+    private String PrimaryContact;
     private String EmergencyContact;
-    private String physicalAddress;
+    private String PhysicalAddress;
 }

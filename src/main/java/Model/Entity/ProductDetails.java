@@ -9,11 +9,10 @@ import lombok.*;
 @Getter
 public class ProductDetails {
     private String id;
-    private String name;
-    private String brand;
-    private String expiry;
-    private String date;
-    private int quantity;
-    private double price;
+    private String Name;
+    private String Brand;
+    private String Expiry;
+    private int Quantity;
+    private double Price;
 }
 

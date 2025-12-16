@@ -8,9 +8,9 @@ import lombok.*;
 @Setter
 @Getter
 public class PaymentDetails {
-    private String id;
-    private String transactionId;
-    private String paymentMethod;
-    private double amountPayed;
-    private String cardType;
+    private String PaymentId;
+    private String OrderDetailId;
+    private String PaymentMethod;
+    private double AmountPayed;
+    private String CardType;
 }
