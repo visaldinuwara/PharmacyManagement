@@ -5,17 +5,18 @@ import Model.Entity.CustomerDetails;
 import Service.CustomerService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class CustomerController {
+public class CustomerController implements Initializable {
     //AddCustomer
     public TextField fieldId;
     public TextField fieldFirstName;
@@ -52,6 +53,11 @@ public class CustomerController {
     //UpdateCustomer
     public Button btnUpdate;
     public Button btnSupplier;
+    public TableColumn ColCusId;
+    public TableColumn ColFirstName;
+    public TableColumn ColLastName;
+    public TableColumn ColEmailAddress;
+    public TableColumn ColPhoneNumber;
     private Stage stage;
     private CustomerService customerService;
     public CustomerController(){
@@ -159,5 +165,22 @@ public class CustomerController {
 
     public void ClickUpdate(ActionEvent actionEvent) throws SQLException {
         customerService.updateCustomer(new CustomerDetails(fieldId.getText(),fieldFirstName.getText(),fieldLastName.getText(),fieldEmailAddress.getText(),fieldPhoneNo.getText()));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ColCusId.setCellValueFactory(new PropertyValueFactory<>("id"));
+            ColFirstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
+            ColLastName.setCellValueFactory(new PropertyValueFactory<>("LastName"));
+            ColEmailAddress.setCellValueFactory(new PropertyValueFactory<>("EmailAddress"));
+            ColPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("PhoneNo"));
+            setItems();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void setItems() throws SQLException {
+        tblCustomer.setItems(customerService.getAllCustomer());
     }
 }

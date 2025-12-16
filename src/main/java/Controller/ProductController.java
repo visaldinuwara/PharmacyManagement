@@ -5,18 +5,19 @@ import Model.Entity.ProductDetails;
 import Service.ProductService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ProductController {
+public class ProductController implements Initializable {
     //AddProduct
     public TextField fieldId;
     public TextField fieldName;
@@ -53,6 +54,12 @@ public class ProductController {
     public Button btnCustomer;
     //UpdateProduct
     public Button btnUpdate;
+    public TableColumn ColProductId;
+    public TableColumn ColProductName;
+    public TableColumn ColProductBrand;
+    public TableColumn ColProductExpire;
+    public TableColumn ColProductQuantity;
+    public TableColumn ColProductPrice;
     private Stage stage;
     private ProductService productService;
     public ProductController(){
@@ -161,5 +168,23 @@ public class ProductController {
 
     public void ClickUpdate(ActionEvent actionEvent) throws SQLException {
         productService.updateProduct(new ProductDetails(fieldId.getText(),fieldName.getText(),fieldBrand.getText(),fieldExpire.getText(),Integer.parseInt(fieldQuantity.getText()),Double.parseDouble(fieldPrice.getText())));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ColProductId.setCellValueFactory(new PropertyValueFactory<>("id"));
+            ColProductName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+            ColProductBrand.setCellValueFactory(new PropertyValueFactory<>("Brand"));
+            ColProductExpire.setCellValueFactory(new PropertyValueFactory<>("Expiry"));
+            ColProductQuantity.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
+            ColProductPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
+            setItems();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void setItems() throws SQLException {
+        tblProducts.setItems(productService.getAll());
     }
 }

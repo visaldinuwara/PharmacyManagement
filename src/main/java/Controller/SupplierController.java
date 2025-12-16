@@ -5,17 +5,18 @@ import Model.Entity.SupplierDetails;
 import Service.SupplierService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class SupplierController {
+public class SupplierController implements Initializable {
     //AddSupplier
     public TextField fieldId;
     public TextField fieldLegalName;
@@ -51,6 +52,12 @@ public class SupplierController {
     public TableView tblSuppliers;
     //UpdateSupplier
     public Button btnUpdate;
+    public TableColumn ColSupplierId;
+    public TableColumn ColLegalName;
+    public TableColumn ColTradeName;
+    public TableColumn ColPrimaryContact;
+    public TableColumn ColEmergencyContact;
+    public TableColumn ColPhysicalAddress;
     private Stage stage;
     private SupplierService supplierService;
     public SupplierController(){
@@ -161,5 +168,24 @@ public class SupplierController {
 
     public void ClickUpdate(ActionEvent actionEvent) throws SQLException {
         supplierService.updateSupplier(new SupplierDetails(fieldId.getText(),fieldLegalName.getText(),fieldTradeName.getText(),fieldPrimaryContact.getText(),fieldEmergencyContact.getText(),fieldPhysicalAddress.getText()));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+
+            ColSupplierId.setCellValueFactory(new PropertyValueFactory<>("id"));
+            ColLegalName.setCellValueFactory(new PropertyValueFactory<>("LegalName"));
+            ColTradeName.setCellValueFactory(new PropertyValueFactory<>("TradeName"));
+            ColPrimaryContact.setCellValueFactory(new PropertyValueFactory<>("PrimaryContact"));
+            ColEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("EmergencyContact"));
+            ColPhysicalAddress.setCellValueFactory(new PropertyValueFactory<>("PhysicalAddress"));
+            setItems();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void setItems() throws SQLException {
+        tblSuppliers.setItems(supplierService.getAll());
     }
 }

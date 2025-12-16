@@ -1,22 +1,22 @@
 package Controller;
 
-import Model.DTO.PaymentetailsDTO;
-import Model.Entity.CustomerDetails;
+import Model.DTO.PaymentDetailsDTO;
 import Model.Entity.PaymentDetails;
 import Service.PaymentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class PaymentController {
+public class PaymentController implements Initializable {
     //AddPayment
     public TextField fieldId;
     public TextField fieldOrderDetailId;
@@ -51,6 +51,11 @@ public class PaymentController {
     public TableView tblPayments;
     //UpdatePayment
     public Button btnUpdate;
+    public TableColumn ColOrderDetailId;
+    public TableColumn ColPaymentMethod;
+    public TableColumn ColAmountPayed;
+    public TableColumn ColCardType;
+    public TableColumn ColPaymentId;
     private Stage stage;
     private PaymentService paymentService;
     public PaymentController(){
@@ -109,7 +114,7 @@ public class PaymentController {
     }
 
     public void ClickAdd(ActionEvent actionEvent) throws SQLException {
-        paymentService.addPayment(new PaymentetailsDTO(fieldOrderDetailId.getText(),fieldPaymentMethod.getText(),Integer.parseInt(fieldAmountPayed.getText()),fieldCardType.getText()));
+        paymentService.addPayment(new PaymentDetailsDTO(fieldOrderDetailId.getText(),fieldPaymentMethod.getText(),Integer.parseInt(fieldAmountPayed.getText()),fieldCardType.getText()));
     }
 
     public void ClickAddMain(ActionEvent actionEvent) throws IOException {
@@ -156,5 +161,22 @@ public class PaymentController {
 
     public void ClickUpdate(ActionEvent actionEvent) throws SQLException {
         paymentService.updatePayment(new PaymentDetails(fieldId.getText(),fieldOrderDetailId.getText(),fieldPaymentMethod.getText(),Integer.parseInt(fieldAmountPayed.getText()),fieldCardType.getText()));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ColPaymentId.setCellValueFactory(new PropertyValueFactory<>("PaymentId"));
+            ColOrderDetailId.setCellValueFactory(new PropertyValueFactory<>("OrderDetailId"));
+            ColPaymentMethod.setCellValueFactory(new PropertyValueFactory<>("PaymentMethod"));
+            ColAmountPayed.setCellValueFactory(new PropertyValueFactory<>("AmountPayed"));
+            ColCardType.setCellValueFactory(new PropertyValueFactory<>("CardType"));
+            setItems();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void setItems() throws SQLException {
+        tblPayments.setItems(paymentService.getAll());
     }
 }

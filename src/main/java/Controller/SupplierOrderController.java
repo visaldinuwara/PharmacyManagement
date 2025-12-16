@@ -8,17 +8,18 @@ import Service.SupplierOrderService;
 import Service.SupplierService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class SupplierOrderController {
+public class SupplierOrderController implements Initializable {
     //AddSupplierOrder
     public TextField fieldId;
     public TextField fieldSupplierId;
@@ -52,6 +53,11 @@ public class SupplierOrderController {
     public TableView tblSupplierOrders;
     //UpdateSupplierOrder
     public Button btnUpdate;
+    public TableColumn ColOrderId;
+    public TableColumn ColSupplierId;
+    public TableColumn ColOrderDate;
+    public TableColumn ColExpectedDate;
+    public TableColumn ColTotalCost;
     private Stage stage;
     private SupplierOrderService supplierOrderService;
     public SupplierOrderController(){
@@ -155,5 +161,22 @@ public class SupplierOrderController {
 
     public void ClickUpdate(ActionEvent actionEvent) throws SQLException {
         supplierOrderService.updateSupplierOrder(new SupplierOrderDetails(fieldId.getText(),fieldSupplierId.getText(),fieldDate.getText(),fieldExpectedDate.getText(),Double.parseDouble(fieldTotalCost.getText())));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ColOrderId.setCellValueFactory(new PropertyValueFactory<>("OrderId"));
+            ColSupplierId.setCellValueFactory(new PropertyValueFactory<>("SupplierId"));
+            ColOrderDate.setCellValueFactory(new PropertyValueFactory<>("OrderDate"));
+            ColExpectedDate.setCellValueFactory(new PropertyValueFactory<>("ExpectedDate"));
+            ColTotalCost.setCellValueFactory(new PropertyValueFactory<>("TotalCost"));
+            setItems();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void setItems() throws SQLException {
+        tblSupplierOrders.setItems(supplierOrderService.getAll());
     }
 }

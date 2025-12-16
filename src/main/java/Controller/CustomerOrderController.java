@@ -6,17 +6,18 @@ import Model.Entity.CustomerOrderDetails;
 import Service.CustomerOrderService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class CustomerOrderController {
+public class CustomerOrderController implements Initializable {
     //AddCustomerOrder
     public TextField fieldCusId;
     public TextField fieldDate;
@@ -49,6 +50,12 @@ public class CustomerOrderController {
     public Button btnSearch;
     //UpdateCustomerOrder
     public Button btnUpdate;
+    public TableColumn ColProductId;
+    public TableColumn ColProductName;
+    public TableColumn ColProductBrand;
+    public TableColumn ColProductExpire;
+    public TableColumn ColProductQuantity;
+    public TableColumn ColProductPrice;
     private Stage stage;
     private CustomerOrderService customerOrderService;
     public CustomerOrderController(){
@@ -150,10 +157,27 @@ public class CustomerOrderController {
         fieldCusId.setText(customerOrderDetails.getCustomerId());
         fieldDate.setText(customerOrderDetails.getOrderDate());
         fieldAmount.setText(String.valueOf(customerOrderDetails.getTotalAmount()));
-        fieldAddress.setText(customerOrderDetails.getShippingAdress());
+        fieldAddress.setText(String.valueOf(customerOrderDetails.getTotalAmount()));
     }
 
     public void ClickUpdate(ActionEvent actionEvent) throws SQLException {
         customerOrderService.deleteCustomerOrder(new CustomerOrderDetails(fieldId.getText(),fieldCusId.getText(),fieldDate.getText(),Double.parseDouble(fieldAmount.getText()),fieldAddress.getText()));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ColProductId.setCellValueFactory(new PropertyValueFactory<>("OrderId"));
+            ColProductName.setCellValueFactory(new PropertyValueFactory<>("CustomerId"));
+            ColProductBrand.setCellValueFactory(new PropertyValueFactory<>("OrderDate"));
+            ColProductExpire.setCellValueFactory(new PropertyValueFactory<>("TotalAmount"));
+            ColProductPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
+            setItems();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void setItems() throws SQLException {
+        tblCustomerOrders.setItems(customerOrderService.getAll());
     }
 }
