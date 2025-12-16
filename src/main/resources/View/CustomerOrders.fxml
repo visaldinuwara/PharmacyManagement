@@ -71,12 +71,11 @@
         <TextArea fx:id="txtSearchList" layoutX="486.0" layoutY="85.0" prefHeight="243.0" prefWidth="94.0" style="-fx-background-radius: 10; -fx-background-color: transparent;" />
         <TableView fx:id="tblCustomerOrders" layoutX="139.0" layoutY="64.0" prefHeight="316.0" prefWidth="336.0" style="-fx-background-color: transparent;">
             <columns>
-                <TableColumn prefWidth="49.0" text="Product ID" />
-                <TableColumn prefWidth="40.0" text="Product Name " />
-                <TableColumn prefWidth="69.0" text="Product Brand" />
-                <TableColumn prefWidth="70.0" text="Product Expire" />
-                <TableColumn prefWidth="44.0" style="font-size: 6;" text="Product Quantity" />
-                <TableColumn prefWidth="63.0" text="Product Price" />
+                <TableColumn fx:id="ColOrderId" prefWidth="49.0" text="Order ID ID" />
+                <TableColumn fx:id="ColCustomerID" prefWidth="40.0" text="Customer ID" />
+                <TableColumn fx:id="ColOrderDate" prefWidth="69.0" text="Order Date" />
+                <TableColumn fx:id="ColTotalAmount" prefWidth="102.0" text="Total Amount" />
+                <TableColumn fx:id="ColShippingAddress" prefWidth="75.0" style="font-size: 6;" text="Shipping Adress" />
             </columns>
         </TableView>
       <Button fx:id="btnCustomerOrders1" layoutX="30.0" layoutY="201.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
