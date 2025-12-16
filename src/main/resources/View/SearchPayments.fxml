@@ -7,84 +7,84 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PaymentController">
     <children>
-        <ImageView fitHeight="400.0" fitWidth="600.0">
+        <ImageView fitHeight="900.0" fitWidth="1600.0">
             <image>
                 <Image url="@../Media/SearchPayment.jpg" />
             </image>
         </ImageView>
-        <TextField fx:id="fieldId" layoutX="222.0" layoutY="73.0" prefHeight="11.0" prefWidth="263.0">
+        <TextField fx:id="fieldId" layoutX="589.0" layoutY="160.0" prefHeight="40.0" prefWidth="700.0">
             <font>
-                <Font size="9.0" />
+                <Font size="18.0" />
             </font>
         </TextField>
-        <TextField fx:id="fieldOrderetailId" layoutX="236.0" layoutY="92.0" prefHeight="11.0" prefWidth="263.0">
+        <TextField fx:id="fieldOrderDetailId" layoutX="635.0" layoutY="204.0" prefHeight="40.0" prefWidth="700.0">
             <font>
-                <Font size="9.0" />
+                <Font size="18.0" />
             </font>
         </TextField>
-        <TextField fx:id="fieldPaymentMethod" layoutX="239.0" layoutY="116.0" prefHeight="11.0" prefWidth="263.0">
+        <TextField fx:id="fieldPaymentMethod" layoutX="634.0" layoutY="254.0" prefHeight="40.0" prefWidth="700.0">
             <font>
-                <Font size="9.0" />
+                <Font size="18.0" />
             </font>
         </TextField>
-        <TextField fx:id="fieldAmountPayed" layoutX="236.0" layoutY="138.0" prefHeight="11.0" prefWidth="263.0">
+        <TextField fx:id="fieldAmountPayed" layoutX="635.0" layoutY="308.0" prefHeight="40.0" prefWidth="700.0">
             <font>
-                <Font size="9.0" />
+                <Font size="18.0" />
             </font>
         </TextField>
-        <TextField fx:id="fieldCardType" layoutX="237.0" layoutY="164.0" prefHeight="11.0" prefWidth="263.0">
+        <TextField fx:id="fieldCardType" layoutX="635.0" layoutY="364.0" prefHeight="40.0" prefWidth="700.0">
             <font>
-                <Font size="9.0" />
+                <Font size="18.0" />
             </font>
         </TextField>
-        <Button fx:id="btnCancel" layoutX="495.0" layoutY="337.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="41.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnCancel" layoutX="1307.0" layoutY="755.0" mnemonicParsing="false" onAction="#ClickCancel" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnAddMain" layoutX="31.0" layoutY="66.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnAddMain" layoutX="82.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClickAddMain" prefHeight="52.0" prefWidth="246.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnUpdateMain" layoutX="31.0" layoutY="91.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnUpdateMain" layoutX="79.0" layoutY="208.0" mnemonicParsing="false" onAction="#ClickUpdateMain" prefHeight="47.0" prefWidth="251.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnDeleteMain" layoutX="31.0" layoutY="118.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnDeleteMain" layoutX="80.0" layoutY="266.0" mnemonicParsing="false" onAction="#ClickDeleteMain" prefHeight="48.0" prefWidth="253.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnSearchMain" layoutX="31.0" layoutY="144.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnSearchMain" layoutX="81.0" layoutY="323.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="249.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnViewMain" layoutX="31.0" layoutY="172.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnViewMain" layoutX="79.0" layoutY="390.0" mnemonicParsing="false" onAction="#ClickViewMain" prefHeight="43.0" prefWidth="253.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnHelp" layoutX="31.0" layoutY="257.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnHelp" layoutX="78.0" layoutY="573.0" mnemonicParsing="false" onAction="#ClickHelp" prefHeight="48.0" prefWidth="253.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnSettings" layoutX="31.0" layoutY="281.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnSettings" layoutX="78.0" layoutY="637.0" mnemonicParsing="false" onAction="#ClickSettings" prefHeight="44.0" prefWidth="253.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnHomePage" layoutX="30.0" layoutY="345.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnHomePage" layoutX="81.0" layoutY="773.0" mnemonicParsing="false" onAction="#ClickHomePage" prefHeight="52.0" prefWidth="247.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>
         </Button>
-        <Button fx:id="btnSearch" layoutX="492.0" layoutY="70.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="41.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnSearch" layoutX="1304.0" layoutY="161.0" mnemonicParsing="false" onAction="#ClickSearch" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="9.0" />
             </font>

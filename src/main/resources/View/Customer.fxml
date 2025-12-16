@@ -12,7 +12,7 @@
 
 <!-- Removed fx:controller attribute since it was empty -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
     <children>
         <ImageView fitHeight="400.0" fitWidth="600.0">
             <image>
@@ -22,42 +22,37 @@
         <!-- WARNING: ImageView removed its contents. Re-add Image source when available. -->
         <ImageView fitHeight="400.0" fitWidth="600.0" />
 
-        <Button fx:id="btnProducts" layoutX="33.0" layoutY="92.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="89.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnProducts" layoutX="33.0" layoutY="92.0" mnemonicParsing="false" onAction="#ClickProducts" prefHeight="21.0" prefWidth="89.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnOverview" layoutX="33.0" layoutY="65.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="89.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnOverview" layoutX="33.0" layoutY="65.0" mnemonicParsing="false" onAction="#ClickOverview" prefHeight="21.0" prefWidth="89.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnOrders" layoutX="32.0" layoutY="118.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnPayments" layoutX="32.0" layoutY="118.0" mnemonicParsing="false" onAction="#ClickPayments" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnPayments" layoutX="32.0" layoutY="145.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnCustomerOrders" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" onAction="#ClickCustomerOrders" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnCustomers" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnHelp" layoutX="32.0" layoutY="255.0" mnemonicParsing="false" onAction="#ClickHelp" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnHelp" layoutX="32.0" layoutY="255.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnSettings" layoutX="33.0" layoutY="280.0" mnemonicParsing="false" onAction="#ClickSettings" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnSettings" layoutX="33.0" layoutY="280.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Button>
-        <Button fx:id="btnLogOut" layoutX="32.0" layoutY="351.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnLogOut" layoutX="32.0" layoutY="351.0" mnemonicParsing="false" onAction="#ClickLogout" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
@@ -67,21 +62,31 @@
                 <Font size="10.0" />
             </font>
         </Button>
-        <TextField layoutX="482.0" layoutY="54.0" prefHeight="17.0" prefWidth="99.0" promptText="search" style="-fx-background-radius: 17;">
+        <TextField fx:id="txtSearch" layoutX="482.0" layoutY="54.0" prefHeight="17.0" prefWidth="99.0" promptText="search" style="-fx-background-radius: 17;">
             <font>
                 <Font size="10.0" />
             </font>
         </TextField>
-        <Button layoutX="485.0" layoutY="334.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="99.0" style="-fx-background-radius: 15; -fx-background-color: transparent;" />
-        <TextArea layoutX="486.0" layoutY="85.0" prefHeight="243.0" prefWidth="94.0" style="-fx-background-radius: 10; -fx-background-color: transparent;" />
-        <TableView layoutX="138.0" layoutY="54.0" prefHeight="316.0" prefWidth="336.0" style="-fx-background-radius: 15; -fx-background-color: transparent;">
+        <Button fx:id="btnManage" layoutX="485.0" layoutY="334.0" mnemonicParsing="false" onAction="#ClickManageCustomers" prefHeight="43.0" prefWidth="99.0" style="-fx-background-radius: 15; -fx-background-color: transparent;" />
+        <TextArea fx:id="txtSearchList" layoutX="486.0" layoutY="85.0" prefHeight="243.0" prefWidth="94.0" style="-fx-background-radius: 10; -fx-background-color: transparent;" />
+        <TableView fx:id="tblCustomer" layoutX="138.0" layoutY="54.0" prefHeight="316.0" prefWidth="336.0" style="-fx-background-radius: 15; -fx-background-color: transparent;">
             <columns>
-                <TableColumn prefWidth="44.0" text="Customer ID" />
-                <TableColumn prefWidth="45.0" text="First Name ID" />
-                <TableColumn prefWidth="73.0" text="Company Name" />
-                <TableColumn prefWidth="85.0" text="Email Adress" />
-                <TableColumn prefWidth="88.0" style="font-size: 6;" text="Phone No" />
+                <TableColumn fx:id="ColCusId" prefWidth="44.0" text="Customer ID" />
+                <TableColumn fx:id="ColFirstName" prefWidth="45.0" text="First Name ID" />
+                <TableColumn fx:id="ColLastName" prefWidth="73.0" text="LastName" />
+                <TableColumn fx:id="ColEmailAddress" prefWidth="85.0" text="Email Adress" />
+                <TableColumn fx:id="ColPhoneNumber" prefWidth="88.0" style="font-size: 6;" text="Phone No" />
             </columns>
         </TableView>
+      <Button fx:id="btnSupplier" layoutX="32.0" layoutY="202.0" mnemonicParsing="false" onAction="#ClickSupplier" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSupplierOrders" layoutX="31.0" layoutY="226.0" mnemonicParsing="false" onAction="#ClickSupplierOrders" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

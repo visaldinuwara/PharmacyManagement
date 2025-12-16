@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,89 +10,84 @@
 
 <!-- Removed fx:controller attribute since it was empty -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashBoardController">
     <children>
-        <ImageView fitHeight="400.0" fitWidth="600.0">
+        <ImageView fitHeight="900.0" fitWidth="1600.0">
             <image>
                 <Image url="@../Media/DashBoard.jpg" />
             </image>
         </ImageView>
         <!-- WARNING: ImageView removed its contents. Re-add Image source when available. -->
-        <ImageView fitHeight="400.0" fitWidth="600.0" />
+        <ImageView>
+         <viewport>
+            <Rectangle2D />
+         </viewport></ImageView>
 
-        <Button fx:id="btnProducts" layoutX="33.0" layoutY="92.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="89.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnProducts" layoutX="84.0" layoutY="206.0" mnemonicParsing="false" onAction="#navigateProducts" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnOverview" layoutX="33.0" layoutY="65.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="89.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnOverview" layoutX="84.0" layoutY="148.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnOrders" layoutX="32.0" layoutY="118.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnOrders" layoutX="82.0" layoutY="264.0" mnemonicParsing="false" onAction="#navigateOrders" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnPayments" layoutX="32.0" layoutY="145.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnPayments" layoutX="85.0" layoutY="326.0" mnemonicParsing="false" onAction="#navigatePayments" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnCustomers" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnCustomers" layoutX="84.0" layoutY="390.0" mnemonicParsing="false" onAction="#navigateCustomers" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnHelp" layoutX="32.0" layoutY="255.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnHelp" layoutX="85.0" layoutY="572.0" mnemonicParsing="false" onAction="#navigateHelp" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnSettings" layoutX="33.0" layoutY="280.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnSettings" layoutX="83.0" layoutY="633.0" mnemonicParsing="false" onAction="#navigateSettings" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnLogOut" layoutX="32.0" layoutY="351.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnLogOut" layoutX="84.0" layoutY="787.0" mnemonicParsing="false" onAction="#navigateLogout" prefHeight="43.0" prefWidth="244.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnAlarm" layoutX="464.0" layoutY="24.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="14.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnAlarm" layoutX="1236.0" layoutY="52.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="39.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-        <Button fx:id="btnUserDetails" layoutX="485.0" layoutY="26.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: transparent;">
+        <Button fx:id="btnUserDetails" layoutX="1287.0" layoutY="52.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="273.0" style="-fx-background-color: transparent;">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-      <TableView layoutX="138.0" layoutY="230.0" prefHeight="139.0" prefWidth="282.0" style="-fx-background-color: transparent; -fx-background-radius: 10;">
-        <columns>
-          <TableColumn prefWidth="53.092498779296875" text="Order Id" />
-          <TableColumn prefWidth="74.90751647949219" />
-            <TableColumn prefWidth="75.81497192382812" />
-            <TableColumn prefWidth="77.75137329101562" />
-        </columns>
-      </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="58.0" layoutX="156.0" layoutY="125.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="177.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="199.0" layoutY="125.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="221.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="242.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="263.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="284.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="59.0" layoutX="306.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="11.0" />
-      <Rectangle fx:id="firstRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="156.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="secondRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="177.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="thirdRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="199.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="fourthRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="221.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="fifthRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="242.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="sixthRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="262.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="seventhRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="284.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="eitthRevenue" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="306.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
+      <Rectangle fx:id="month01w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="417.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month02w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="473.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month03w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="532.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month04w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="588.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month05w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="645.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month06w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="701.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month07w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="758.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month08w" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="131.0" layoutX="814.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month01g" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="417.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month02w" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="473.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month03w" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="532.0" layoutY="389.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month04w" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="588.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month05w" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="645.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month06w" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="701.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month07w" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="23.0" layoutX="758.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="month08w" arcHeight="5.0" arcWidth="5.0" fill="#395454" height="59.0" layoutX="814.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
     </children>
 </AnchorPane>
