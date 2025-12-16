@@ -7,8 +7,8 @@ import lombok.*;
 @ToString
 @Setter
 @Getter
-public class PaymentetailsDTO {
-    private String transactionId;
+public class PaymentDetailsDTO {
+    private String orderDetailId;
     private String paymentMethod;
     private double amountPayed;
     private String cardType;
