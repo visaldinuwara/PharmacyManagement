@@ -1,7 +1,6 @@
 package Service;
 
 import Model.DTO.PaymentDetailsDTO;
-import Model.DTO.PaymentetailsDTO;
 import Model.Entity.PaymentDetails;
 import Repository.PaymentRepository;
 import javafx.collections.ObservableList;
@@ -13,9 +12,9 @@ public class PaymentService {
     public PaymentService(){
         paymentRepository=new PaymentRepository();
     }
-    public void addPayment(PaymentDetailsDTO paymentetailsDTO) throws SQLException {
+    public void addPayment(PaymentDetailsDTO paymentdetailsDTO) throws SQLException {
         String id="1";
-        paymentRepository.addPayment(new PaymentDetails(id,paymentetailsDTO.getOrderDetailId(),paymentetailsDTO.getPaymentMethod(),paymentetailsDTO.getAmountPayed(),paymentetailsDTO.getCardType()));
+        paymentRepository.addPayment(new PaymentDetails(id, paymentdetailsDTO.getOrderDetailId(), paymentdetailsDTO.getPaymentMethod(), paymentdetailsDTO.getAmountPayed(), paymentdetailsDTO.getCardType()));
     }
 
     public void deletePayment(String text) throws SQLException {
